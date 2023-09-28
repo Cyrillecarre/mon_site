@@ -1,20 +1,5 @@
-// animation de la sourie //
 
-const circles = document.querySelectorAll("header");
-
-onmousemove = (e)=>{
-  
-  circles.forEach((circle, index) =>{
-   
-    setTimeout(()=>{
-      
-    circle.style.left = `${e.clientX - circle.clientWidth/2}px`;
-    circle.style.top = `${e.clientY - circle.clientHeight/2 }px`;  
-    }, index * 30);
-       
-  });
-};
-
+// animation du titre page accueil //
 
 document.addEventListener('DOMContentLoaded', () => {
   const letters = document.querySelectorAll('.letter');
@@ -22,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function applyRandomTransform(letter) {
     const rotate = Math.random() * 360;
     const scale = 0.5 + Math.random();
-    const translateX = Math.random() * 40 - 20;
-    const translateY = Math.random() * 40 - 20;
+    const translateX = Math.random() * 100 - 50;
+    const translateY = Math.random() * 100 - 50;
     
     letter.style.transform = `rotate(${rotate}deg) scale(${scale}) translate(${translateX}px, ${translateY}px)`;
   }
@@ -68,6 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+// animation des vignettes page accueil //
+
 setTimeout(function () {
   document.querySelector('.vignette1').classList.add('visible');
 }, 800);
@@ -79,3 +66,16 @@ setTimeout(function () {
 setTimeout(function () {
   document.querySelector('.vignette3').classList.add('visible');
 }, 1700);
+
+
+// logique bouton vignette //
+
+const monProfil = document.getElementById("vignette1");
+
+  monProfil.addEventListener("click", function() {
+    window.location.href = "pages/monProfil.html";
+  });
+
+
+
+
