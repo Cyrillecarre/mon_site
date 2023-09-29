@@ -1,22 +1,22 @@
 
-// animation du titre page accueil //
-
+// animation du titre //
 document.addEventListener('DOMContentLoaded', () => {
   const letters = document.querySelectorAll('.letter');
+  let animationIteration = 0;
+  const maxAnimationIterations = 6; // Définissez le nombre d'itérations souhaité
 
   function applyRandomTransform(letter) {
-    const rotate = Math.random() * 360;
+    const rotate = Math.random() * 720 - 360;
     const scale = 0.5 + Math.random();
-    const translateX = Math.random() * 100 - 50;
-    const translateY = Math.random() * 100 - 50;
-    
+    const translateX = Math.random() * 200 - 100;
+    const translateY = Math.random() * 100 - 100;
     letter.style.transform = `rotate(${rotate}deg) scale(${scale}) translate(${translateX}px, ${translateY}px)`;
   }
 
   function animateLetters() {
     letters.forEach((letter, index) => {
       applyRandomTransform(letter);
-      
+
       const animations = [
         { delay: 0.6, color: 'aqua' },
         { delay: 0.8, color: 'rgb(67, 64, 160)' },
@@ -45,12 +45,18 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       letters.forEach((letter) => {
         letter.style.transform = '';
+        letter.style.animation = '';
       });
-      animateLetters();
-    }, 800);  
+      animationIteration++;
+      if (animationIteration < maxAnimationIterations) {
+        animateLetters();
+      }
+    }, 800);
   }
+
   animateLetters();
 });
+
 
 //animation des paragraphes au chargement //
 
